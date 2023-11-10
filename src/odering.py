@@ -1,13 +1,14 @@
 import time
 import pandas as pd
+import os
+import matplotlib.pyplot as plt
 
-DATA_PATH = 'G:/Meu Drive/Facul/Teoria da Computação/Teoria-da-Computacao/data/execucao-da-despesa-publica_jan-a-dez_2022.csv'
+DATA_PATH = '../data/execucao-da-despesa-publica_jan-a-dez_2022.csv'
 FILTER_COLUMN = 'Unidade Gestora'
 FILTER_VALUE = 'Videira'
+FILE_RESULTS = '../results/sorting_results.txt'
 
 # Função para ler e filtrar o arquivo CSV
-
-
 def read_and_filter_csv(path, filter_column, filter_value):
     df = pd.read_csv(path, sep=';')
     if df.empty:
@@ -23,8 +24,6 @@ def read_and_filter_csv(path, filter_column, filter_value):
     return df
 
 # Função para imprimir os valores únicos de uma coluna
-
-
 def print_unique_values_of_column(df, column_name):
     unique_values = df[column_name].unique()
     print(f"Valores únicos na coluna '{column_name}':")
@@ -32,14 +31,10 @@ def print_unique_values_of_column(df, column_name):
         print(value)
 
 # Função para calcular tempo de execução
-
-
 def calculate_time(start, end):
     return end - start
 
 # Função para calcular o tempo de excecução de um algoritmo de ordenação
-
-
 def calculate_sorting_time(df, column, ascending, sort_function):
     start = time.time()
     df = sort_function(df, column, ascending)
@@ -47,14 +42,10 @@ def calculate_sorting_time(df, column, ascending, sort_function):
     return calculate_time(start, end)
 
 # Função para ordenar o dataframe
-
-
 def sort_dataframe(df, column, ascending):
     return df.sort_values(by=[column], ascending=ascending)
 
 # Função para ordenar o dataframe com o bubble sort
-
-
 def bubble_sort_dataframe(df, column, ascending):
     # Obter os índices ordenados com base na coluna especificada.
     sorted_indices = bubble_sort_indices(df[column].tolist())
@@ -66,8 +57,6 @@ def bubble_sort_dataframe(df, column, ascending):
     return sorted_df.reset_index(drop=True)
 
 # Bubble sort para listas de índices
-
-
 def bubble_sort_indices(arr):
     n = len(arr)
     indices = list(range(n))
@@ -78,8 +67,6 @@ def bubble_sort_indices(arr):
     return indices
 
 # Função para ordenar o dataframe com o selection sort
-
-
 def selection_sort_dataframe(df, column, ascending):
     # Obter os índices ordenados com base na coluna especificada.
     sorted_indices = selection_sort_indices(df[column].tolist())
@@ -91,8 +78,6 @@ def selection_sort_dataframe(df, column, ascending):
     return sorted_df.reset_index(drop=True)
 
 # Selection sort para listas de índices
-
-
 def selection_sort_indices(arr):
     n = len(arr)
     indices = list(range(n))
@@ -105,8 +90,6 @@ def selection_sort_indices(arr):
     return indices
 
 # Função para ordenar o dataframe com o insertion sort
-
-
 def insertion_sort_dataframe(df, column, ascending=True):
     indices = insertion_sort_indices(df[column].tolist())
     if not ascending:
@@ -114,8 +97,6 @@ def insertion_sort_dataframe(df, column, ascending=True):
     return df.iloc[indices].reset_index(drop=True)
 
 # Insertion sort para listas de índices
-
-
 def insertion_sort_indices(arr):
     indices = list(range(len(arr)))
     for i in range(1, len(arr)):
@@ -128,8 +109,6 @@ def insertion_sort_indices(arr):
     return indices
 
 # Função para ordenar o dataframe com o merge sort
-
-
 def merge_sort_dataframe(df, column, ascending=True):
     indices = merge_sort_indices(df[column].tolist())
     if not ascending:
@@ -137,8 +116,6 @@ def merge_sort_dataframe(df, column, ascending=True):
     return df.iloc[indices].reset_index(drop=True)
 
 # Merge sort para listas de índices
-
-
 def merge_sort_indices(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -155,8 +132,6 @@ def merge_sort_indices(arr):
         return list(range(len(arr)))
 
 # Função para fazer o merge do merge sort
-
-
 def merge(arr, left_indices, right_indices):
     merged_indices = []
     while left_indices and right_indices:
@@ -168,8 +143,6 @@ def merge(arr, left_indices, right_indices):
     return merged_indices
 
 # Função para fazer o quick sort no dataframe
-
-
 def quick_sort_dataframe(df, column, ascending=True):
     indices = quick_sort_indices(df[column].tolist(), 0, len(df[column]) - 1)
     if not ascending:
@@ -177,8 +150,6 @@ def quick_sort_dataframe(df, column, ascending=True):
     return df.iloc[indices].reset_index(drop=True)
 
 # Quick sort para listas de índices
-
-
 def quick_sort_indices(arr, start, end):
     if start < end:
         pi = partition(arr, start, end)
@@ -187,8 +158,6 @@ def quick_sort_indices(arr, start, end):
     return list(range(len(arr)))
 
 # Função para fazer a partição do quick sort
-
-
 def partition(arr, start, end):
     pivot = arr[end]
     i = start - 1
@@ -199,6 +168,34 @@ def partition(arr, start, end):
     arr[i+1], arr[end] = arr[end], arr[i+1]
     return i + 1
 
+# Função para salvar os resultados em um arquivo txt
+def save_results_to_txt_file(file_results, text, mode = 'w'):
+    with open(file_results, mode, encoding = 'utf-8') as file:
+        file.write(text + '\n')
+
+# Função para plotar o gráfico de barras
+
+
+def plotar_grafico_de_barras(tempos):
+    algoritmos = list(tempos.keys())
+    tempos = list(tempos.values())
+
+    # Criar barras
+    plt.bar(algoritmos, tempos, color='skyblue')
+
+    # Adicionar título e rótulos
+    plt.title('Comparação dos Tempos de Execução dos Algoritmos de Ordenação')
+    plt.xlabel('Algoritmos')
+    plt.ylabel('Tempo de execução (s)')
+
+    # Adicionar os valores em cima das barras
+    for i, tempo in enumerate(tempos):
+        plt.text(i, tempo, f"{tempo:.2f}", ha='center', va='bottom')
+
+    # Mostrar o gráfico
+    plt.xticks(rotation=45)  # Rotacionar os rótulos para melhor visualização
+    plt.tight_layout()  # Ajustar layout
+    plt.show()
 
 if __name__ == '__main__':
 
@@ -223,13 +220,31 @@ if __name__ == '__main__':
     # Calculando o tempo de execução do quick sort
     quick_sort_time = calculate_sorting_time(
         df, 'Valor Empenhado', False, quick_sort_dataframe)
+    
+    results_dir = os.path.dirname(FILE_RESULTS)
 
-    # Imprimindo valores obtidos de tempo de execução
-    print(f'Tempo de execução do sort do pandas: {pandas_sort_time}\n')
-    print(f'Tempo de execução do bubble sort: {bubble_sort_time}\n')
-    print(f'Tempo de execução do selection sort: {selection_sort_time}\n')
-    print(f'Tempo de execução do insertion sort: {insertion_sort_time}\n')
-    print(f'Tempo de execução do merge sort: {merge_sort_time}\n')
-    print(f'Tempo de execução do quick sort: {quick_sort_time}\n')
+    if not os.path.exists(results_dir):
+        os.makedirs(results_dir)
 
-    print(df.head(1))
+    save_results_to_txt_file(FILE_RESULTS, f"Resultado da ordenação do dataframe filtrado pela coluna '{FILTER_COLUMN}' com o valor '{FILTER_VALUE}'\n")
+
+    # Salvando os resultados em um arquivo txt
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do sort do pandas: {pandas_sort_time}', 'a')
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do bubble sort: {bubble_sort_time}', 'a')
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do selection sort: {selection_sort_time}', 'a')
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do insertion sort: {insertion_sort_time}', 'a')
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do merge sort: {merge_sort_time}', 'a')
+    save_results_to_txt_file(FILE_RESULTS, f'Tempo de execução do quick sort: {quick_sort_time}', 'a')
+
+    print("Arquivo de resultados salvo com sucesso!")
+
+    tempos_de_execucao = {
+    'Pandas Sort': pandas_sort_time,
+    'Bubble Sort': bubble_sort_time,
+    'Selection Sort': selection_sort_time,
+    'Insertion Sort': insertion_sort_time,
+    'Merge Sort': merge_sort_time,
+    'Quick Sort': quick_sort_time
+    }
+
+    plotar_grafico_de_barras(tempos_de_execucao)
