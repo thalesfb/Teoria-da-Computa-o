@@ -3,6 +3,7 @@ import unittest
 import pandas as pd
 import sys
 import os
+import numpy as np
 
 sys.path.append(os.path.abspath(os.path.join('..', 'src')))
 
