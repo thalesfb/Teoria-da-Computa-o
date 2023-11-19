@@ -6,7 +6,8 @@ Este documento apresenta a análise e otimização de 10 algoritmos desenvolvido
 ----
 
 <details>
-<summary>## Algoritmo 1: Álgebra linear - Transformações lineares</summary>
+<summary>Algoritmo 1: Álgebra linear - Transformações lineares</summary>
+
 ### Descrição
 Breve descrição do algoritmo.
 
@@ -20,9 +21,12 @@ Descrição das otimizações identificadas.
 Justificativa da classificação como P ou NP.
 
 </details>
+
 ----
+
 <details>
-<summary>## Algoritmo 2: Computação Grárica - Transformações lineares</summary>
+<summary>Algoritmo 2: Computação Grárica - Transformações lineares</summary>
+
 ### Descrição
 Breve descrição do algoritmo.
 
@@ -35,9 +39,12 @@ Descrição das otimizações identificadas.
 ### Classificação: P ou NP
 Justificativa da classificação como P ou NP.
 </details>
+
 ----
+
 <details>
-<summary>## Algoritmo 3: Sistemas Operacionais - Cálculo do PI com thread</summary>
+<summary>Algoritmo 3: Sistemas Operacionais - Cálculo do PI com thread</summary>
+
 ### Descrição
 Breve descrição do algoritmo.
 
@@ -50,9 +57,12 @@ Descrição das otimizações identificadas.
 ### Classificação: P ou NP
 Justificativa da classificação como P ou NP.
 </details>
+
 ----
+
 <details>
-<summary>## Algoritmo 4: Programação 2 - Site para controle animal</summary>
+<summary>Algoritmo 4: Programação 2 - Site para controle animal</summary>
+
 ### Descrição
 Breve descrição do algoritmo.
 
@@ -65,9 +75,12 @@ Descrição das otimizações identificadas.
 ### Classificação: P ou NP
 Justificativa da classificação como P ou NP.
 </details>
+
 ----
+
 <details>
-<summary>## Algoritmo 5: Redes 2 - Socket em linux</summary>
+<summary>Algoritmo 5: Redes 2 - Socket em linux</summary>
+
 ### Descrição
 Breve descrição do algoritmo.
 
@@ -80,6 +93,7 @@ Descrição das otimizações identificadas.
 ### Classificação: P ou NP
 Justificativa da classificação como P ou NP.
 </details>
+
 ----
 
 ### Conclusão
