@@ -126,7 +126,7 @@ Justificativa da classificação como P ou NP.
 
 ### Descrição
 
-É um código feito em C que recebe altura de 5 pessoas onde vão ser imprimidas: A maior altura, a média das alturas e as pessoas com altura maior que 2 metros.
+Código feito em C que recebe altura de 5 pessoas onde vão ser imprimidas: A maior altura, a média das alturas e as pessoas com altura maior que 2 metros.
 
 ### Análise de Complexidades
 
@@ -152,93 +152,89 @@ Dado que o algoritmo executa em tempo constante e não há nenhum problema de de
 
 ### Descrição
 
-Este código é um código que recebe duas notas
-de três alunos, e ele vai dizer se os alunos são aprovados
-ou não e depois ele vai dizer quantos alunos foram aprovados, reprovados ou
-está na recuperação nos três alunos.
+Código em C que recebe duas notas de três alunos, e ele vai dizer se os alunos são aprovados ou não e depois ele vai dizer quantos alunos foram aprovados, reprovados ou estão de recuperação dos três alunos.
 
 ### Análise de Complexidade
 
-A complexidade deste algoritmo é linear O(N).
+A complexidade deste algoritmo é linear O(n), onde n é o número de iterações do loop (neste caso, 3).
 
 ### Otimizações Propostas
 
-Descrição das otimizações identificadas.
+O loop “while” poderia ser substituído polo loop “for” como a variável “cont” é usado somente dentro do loop “while” daí a gente poderia declarar-la diretamente dentro do loop “for”. A variável “media” poderia ser usada como uma variável local, daí o programa ficaria com menos linhas de código.
+Poderia ter também uma outra verificação para verificar se a média vai além de 10.
 
 ### Classificação: P ou NP
 
-Este algoritmo pertence à classe P (complexidade polinomial).
-A classe P engloba todos os problemas de decisão que podem ser
-solucionados de maneira eficiente, ou seja, em tempo polinomial.
+Este algoritmo é de classe P porque o tempo de execução aumenta linearmente com o tamanho da entrada. A entrada neste contexto específico não influencia o desempenho de maneira significativa.
 
 </details>
 
 ---
 
 <details>
-<summary>Algoritmo 8: Disciplina - Assunto</summary>
+<summary>Algoritmo 8: Algoritmos - Cálculo fatorial</summary>
 
 ### Descrição
 
-Breve descrição do algoritmo.
+Código feito em C que calcula o fatorial de um número.
 
 ### Análise de Complexidade
 
-Análise detalhada da complexidade utilizando a notação Big O.
+A complexidade desse algoritmo pode ser representada como O(N), onde N é o valor do número inserido. Isso ocorre porque o loop while é executado N vezes, onde N é o valor do número inserido. 
 
 ### Otimizações Propostas
 
-Descrição das otimizações identificadas.
+Poderia usar uma verificação para avaliar se o número digitado é negativo, caso seja, ele retorna uma mensagem.
 
 ### Classificação: P ou NP
 
-Justificativa da classificação como P ou NP.
+Este algoritmo é de classe P, pois o tempo de execução é polinomial em relação ao tamanho da entrada, seguindo a definição da classe P na teoria da complexidade computacional.
 
 </details>
 
 ---
 
 <details>
-<summary>Algoritmo 9: Disciplina - Assunto</summary>
+<summary>Algoritmo 9: Algoritmos - Matriz</summary>
 
 ### Descrição
 
-Breve descrição do algoritmo.
+Código feito em C, dada a entrada de uma matriz quatro por quatro ele a imprime para o usuário.
 
 ### Análise de Complexidade
 
-Análise detalhada da complexidade utilizando a notação Big O.
+A complexidade deste algoritmo é Quadrática O(n²).
 
 ### Otimizações Propostas
 
-Descrição das otimizações identificadas.
+Pode ser útil incluir verificações para garantir que a entrada do usuário seja válida. Por exemplo, garantir que o usuário insira valores numéricos e não caracteres.
 
 ### Classificação: P ou NP
 
-Justificativa da classificação como P ou NP.
+Este algoritmo é um exemplo de algoritmo de complexidade polinomial. O motivo é que o tempo de execução cresce de maneira polinomial com o tamanho da entrada.
 
 </details>
 
 ---
 
 <details>
-<summary>Algoritmo 10: Disciplina - Assunto</summary>
+<summary>Algoritmo 10: Algoritmos - Soma de vetores</summary>
 
 ### Descrição
 
-Breve descrição do algoritmo.
+Código feito em python, ele faz a soma de dois vetores e imprime o vetor resultante.
 
 ### Análise de Complexidade
 
-Análise detalhada da complexidade utilizando a notação Big O.
+A complexidade é linear, O(N), onde N é o tamanho dos vetores (que é constante neste caso, 7).
 
 ### Otimizações Propostas
 
-Descrição das otimizações identificadas.
+Pode-se otimizar o código utilizando uma funçõe nativa do Python, como "zip" para percorrer simultaneamente os elementos dos vetores.
 
 ### Classificação: P ou NP
 
-Justificativa da classificação como P ou NP.
+Algoritmos lineares são classificados como P (Polinomial), pois seu tempo de execução é proporcional ao tamanho da entrada.
 
 </details>
 
