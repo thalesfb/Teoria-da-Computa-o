@@ -20,5 +20,5 @@ int main(void) {
   }
   printf("O fatorial é: %i\n", fat);
 
-  return 0;
+  return 0;
 }
